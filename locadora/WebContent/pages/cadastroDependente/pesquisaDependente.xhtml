@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:rich="http://richfaces.org/rich"
+ xmlns:a4j="http://richfaces.org/a4j">
+<body>
+<ui:composition template="../index.xhtml">
+ <ui:define name="corpo">
+  <f:view>
+   <rich:messages styleClass="messages" />
+   <a4j:region id="regiaoAjax">
+    <a4j:status id="sts">
+     <f:facet name="start">
+      <h:graphicImage value="/images/ajax-loader.gif" />
+     </f:facet>
+    </a4j:status>
+   </a4j:region>
+   <h1>Pesquisar Dependentes</h1>
+   <h:form>
+    <h:panelGrid columns="3">
+     <h:outputLabel value="Digite Nome " />
+     <h:inputText value="#{dependenteBean.dependente.nome}" />
+     <a4j:commandButton value="Pesquisar"
+      action="#{dependenteBean.pesquisaDependentes}" styleClass="botoes"
+      status="sts" reRender="dependente" />
+    </h:panelGrid>
+   </h:form>
+   
+   
+   <h:form>
+    <rich:dataTable value="#{cleinteBean.listDependentes}"
+     var="dependente" id="dependente" StyleClass="tables"
+     onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+     width="100%">
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Nome" />
+      </f:facet>
+      <h:outputText value="#{clienteBean.cliente.nome}" />
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Grau de Parentesco" />
+      </f:facet>
+      <h:outputText value="#{dependente.grauParentesco}" />
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Nome do Dependente" />
+      </f:facet>
+      <h:outputText value="#{dependente.nome}" />
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Ações" />
+      </f:facet>
+      <a4j:commandLink action="toAtualizaDependente">
+       <h:outputText value="Selecionar" />
+       <f:setPropertyActionListener value="#{dependente}"
+        target="#{dependenteBean.dependente}" />
+      </a4j:commandLink>
+     </rich:column>
+    </rich:dataTable>
+   </h:form>
+  </f:view>
+ </ui:define>
+</ui:composition>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:rich="http://richfaces.org/rich"
+ xmlns:a4j="http://richfaces.org/a4j">
+<head>
+<title>Alugar Filme</title>
+</head>
+<body>
+<ui:composition template="../index.xhtml">
+ <ui:define name="corpo">
+  <f:view>
+   <rich:messages styleClass="messages" />
+   <a4j:region id="regiaoAjax">
+    <a4j:status id="sts">
+     <f:facet name="start">
+      <h:graphicImage value="/images/ajax-loader.gif" />
+     </f:facet>
+    </a4j:status>
+   </a4j:region>
+   <h1>Alugar Filmes</h1>
+   <a4j:keepAlive beanName="locacaoBean" />
+   <a4j:keepAlive beanName="filmeBean" />
+   <a4j:keepAlive beanName="clienteBean" />
+   
+   <h:form id="tudo">
+   
+    <h:panelGrid columns="8" id="usuario">
+     <h:outputText value="Dados do Cliente: " style="color:#00008B" />
+     <h:outputText value=" Nome " />
+     <h:outputText value="#{locacaoBean.cliente.nome}"
+      style="color:blue; margin: 0 5px 0 5px;" readonly="true" />
+     <h:outputText value="CPF " />
+     <h:outputText value="#{locacaoBean.cliente.cpf}"
+      style="color:blue; margin: 0 5px 0 5px;" readonly="true" />
+    <h:panelGrid columns="2" rendered="#{locacaoBean.temDependente}">
+          <h:outputText value="Dependente" />
+          <h:outputText value="#{locacaoBean.dependente.nome}"
+             style="color:blue; margin: 0 5px 0 5px;" readonly="true" />
+      </h:panelGrid>
+    </h:panelGrid>
+    
+     
+    
+    
+    <h2>Dependentes</h2>
+    <rich:dataTable value="#{locacaoBean.listDependente}"
+     var="dependente" id="dependente" StyleClass="tables"
+     onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+     width="100%;">
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Nome" />
+      </f:facet>
+      <h:outputText value="#{dependente.nome}" />
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Grau Parentesco" />
+      </f:facet>
+      <h:outputText value="#{dependente.grauParentesco}" />
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Opção de Locação" />
+      </f:facet>
+      <a4j:commandLink reRender="tudo">
+       <h:outputText value="Marcar" />
+       <f:setPropertyActionListener value="#{dependente}"
+        target="#{locacaoBean.dependente}" reRender="tudo" />
+      </a4j:commandLink>
+     </rich:column>
+    </rich:dataTable>
+    <br />
+    <h1>Pesquisar Filmes</h1>
+    <h:panelGrid columns="6">
+     <h:outputLabel value="Titulo: " />
+     <h:inputText value="#{filmeBean.filme.titulo}" />
+     <a4j:commandButton value="Ok"
+      action="#{filmeBean.filmesByTituloNotNull}" styleClass="botoes"
+      status="sts" reRender="filme" />
+    </h:panelGrid>
+    <h:panelGrid columns="3">
+     <h:outputText value="Gênero: " />
+     <h:selectOneMenu value="#{filmeBean.filme.genero}" id="genero"
+      styleClass="inputStyle">
+      <f:selectItems value="#{generoBean.listDescricao}" />
+      <f:converter converterId="generoConverter" />
+     </h:selectOneMenu>
+     <a4j:commandButton value="Ok"
+      action="#{filmeBean.filmesByGeneroNotNull}" styleClass="botoes"
+      status="sts" reRender="filme" />
+    </h:panelGrid>
+    <br />
+    <rich:dataTable value="#{filmeBean.listFilmesNotNull}" var="filme"
+     id="filme" StyleClass="tables"
+     onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+     width="100%">
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Titulo" />
+      </f:facet>
+      <h:outputText value="#{filme.titulo}" />
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Gênero" />
+      </f:facet>
+      <h:outputText value="#{filme.genero.descricao}" />
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Duração" />
+      </f:facet>
+      <h:outputText value="#{filme.duracao}" /> min
+				</rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Data" />
+      </f:facet>
+      <h:outputText value="#{filme.dataLancamento}">
+      <f:convertDateTime pattern="dd/MM/yyyy"/>
+     </h:outputText>
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Ações" />
+      </f:facet>
+      <a4j:commandLink action="#{locacaoBean.calcularData}">
+       <h:outputText value="Alugar" />
+       <f:setPropertyActionListener value="#{filme}"
+        target="#{locacaoBean.filme}" />
+      </a4j:commandLink>
+     </rich:column>
+    </rich:dataTable>
+    <h:panelGrid columns="4">
+     <a4j:commandButton value="Voltar" action="toIndexLocacao"
+      styleClass="botoes" status="sts" />
+    </h:panelGrid>
+   </h:form>
+  </f:view>
+ </ui:define>
+</ui:composition>
+</body>
+</html>

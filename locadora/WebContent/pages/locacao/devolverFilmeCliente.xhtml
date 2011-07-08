@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:rich="http://richfaces.org/rich"
+ xmlns:a4j="http://richfaces.org/a4j">
+<head>
+<title>Devolver Filme</title>
+</head>
+<body>
+<ui:composition template="../index.xhtml">
+ <ui:define name="corpo">
+  <f:view>
+   <rich:messages styleClass="messages" />
+   <a4j:region id="regiaoAjax">
+    <a4j:status id="sts">
+     <f:facet name="start">
+      <h:graphicImage value="/images/ajax-loader.gif" />
+     </f:facet>
+    </a4j:status>
+   </a4j:region>
+   <h1>Devolver Filme</h1>
+   <h:form>
+    <a4j:keepAlive beanName="locacaoBean" />
+    <a4j:keepAlive beanName="clienteBean" />
+    <a4j:keepAlive beanName="filmeBean" />
+    <h:panelGrid columns="5">
+     <h:outputText value="Dados do Cliente: " style="color:#8b795e;" />
+     <h:outputText value="Nome " />
+     <h:outputText value="#{locacaoBean.cliente.nome}"
+      style="color:blue; margin: 0 5px 0 5px;" readonly="true" />
+     <h:outputText value="CPF " />
+     <h:outputText value="#{locacaoBean.cliente.cpf}"
+      style="color:blue; margin: 0 5px 0 5px;" readonly="true" />
+    </h:panelGrid>
+    <h:panelGrid columns="5">
+     <h:outputText value="Dados do Filme: " style="color:#8b795e;" />
+     <h:outputText value="Título: " />
+     <h:outputText value="#{locacaoBean.locacao.filme.titulo}"
+      style="color:blue; margin: 0 5px 0 5px;" readonly="true" />
+     <h:outputText value="Quantidade de Cópias " />
+     <h:outputText value="#{locacaoBean.locacao.filme.qtdCopias}"
+      style="color:blue; margin: 0 5px 0 5px;" readonly="true" />
+    </h:panelGrid>
+    <h:panelGrid columns="2" id="inputs">
+     <h:outputText value="Data do Aluguel" />
+     <h:outputText value="#{locacaoBean.locacao.dateAluguel}"
+      style="color:red; margin: 0 5px 0 5px;" readonly="true" >
+        <f:convertDateTime pattern="dd/MM/yyyy"/>
+     </h:outputText>
+     <h:outputText value="Data Devolucao" />
+     <h:outputText value="#{locacaoBean.locacao.dateDevolucao}"
+      style="color:red; margin: 0 5px 0 5px;" >
+        <f:convertDateTime pattern="dd/MM/yyyy"/>
+     </h:outputText>
+    </h:panelGrid>
+    <h:panelGrid columns="2" id="campo">
+     <h:outputText value="Preço" />
+     <h:outputText value="#{locacaoBean.preco}"
+      style="color:red; margin: 0 5px 0 5px;" />
+     <h:outputText value="Multa" />
+     <h:outputText value="#{locacaoBean.multa}"
+      style="color:red; margin: 0 5px 0 5px;" />
+     <h:outputText value="Preço Total" />
+     <h:outputText value="#{locacaoBean.precoTotal}"
+      style="color:red; margin: 0 5px 0 5px;" />
+    </h:panelGrid>
+    <h:panelGrid columns="4" style=" width : 248px; height : 33px;">
+     <a4j:commandButton value="Devolver" action="#{locacaoBean.delete}"
+      styleClass="botoes" status="sts" reRender="locacao" />
+     <a4j:commandButton value="Voltar" action="toDevolverFilme"
+      immediate="true" styleClass="botoes" status="sts" />
+     <a4j:commandButton type="reset" value="Limpar" styleClass="botoes"
+      immediate="true" />
+    </h:panelGrid>
+    <rich:dataTable value="#{locacaoBean.listLocacao}" var="locacao"
+     id="locacao" StyleClass="tables"
+     onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+     width="100%;">
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Nome do Filme" />
+      </f:facet>
+      <h:outputText value="#{locacao.filme.titulo}" />
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Data do Aluguel" />
+      </f:facet>
+      <h:outputText value="#{locacao.dateAluguel}" >
+        <f:convertDateTime pattern="dd/MM/yyyy"/>
+     </h:outputText>
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Data da Devolução" />
+      </f:facet>
+      <h:outputText value="#{locacao.dateDevolucao}" >
+        <f:convertDateTime pattern="dd/MM/yyyy"/>
+     </h:outputText>
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Valor a pagar" />
+      </f:facet>
+      <h:outputText value="#{locacao.preco}" />
+     </rich:column>
+    </rich:dataTable>
+   </h:form>
+  </f:view>
+ </ui:define>
+</ui:composition>
+</body>
+</html>

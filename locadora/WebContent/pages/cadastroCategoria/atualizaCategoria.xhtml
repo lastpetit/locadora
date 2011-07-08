@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:rich="http://richfaces.org/rich"
+ xmlns:a4j="http://richfaces.org/a4j">
+<body>
+<ui:composition template="../index.xhtml">
+ <ui:define name="corpo">
+  <f:view>
+   <rich:messages styleClass="messages" />
+   <a4j:region id="regiaoAjax">
+    <a4j:status id="sts">
+     <f:facet name="start">
+      <h:graphicImage value="/images/ajax-loader.gif" />
+     </f:facet>
+    </a4j:status>
+   </a4j:region>
+   <h1>Categorias</h1>
+   <a4j:keepAlive beanName="categoriaBean" />
+   <h:form>
+    <h:panelGrid columns="2" id="inputs">
+     <h:outputLabel value="Categoria: " />
+     <h:inputText value="#{categoriaBean.categoria.descricao}"
+      required="true" />
+     <h:outputLabel value="Preço: " />
+     <h:inputText value="#{categoriaBean.categoria.preco}"
+      required="true" />
+     <h:outputLabel value="Total de Dias: " />
+     <h:inputText value="#{categoriaBean.categoria.totalDias}"
+      required="true" />
+    </h:panelGrid>
+    <h:panelGrid columns="4">
+     <a4j:commandButton value="Salvar"
+      action="#{categoriaBean.verifica}" styleClass="botoes"
+      status="sts" reRender="inputs" />
+     <a4j:commandButton type="reset" value="Limpar" immediate="true"
+      styleClass="botoes" />
+     <a4j:commandButton value="Pesquisa" action="toPesquisaCategoria"
+      immediate="true" styleClass="botoes" status="sts" />
+     <a4j:commandButton value="Excluir" action="#{categoriaBean.delete}"
+      styleClass="botoes" status="sts" reRender="inputs" />
+    </h:panelGrid>
+   </h:form>
+  </f:view>
+ </ui:define>
+</ui:composition>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM
+  NAME="rules:#pages#cadastroCategoria#atualizaCategoria.xhtml"
+  PATH="/pages/cadastroCategoria/atualizaCategoria.xhtml"
+  SHAPE="32,1905,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#cadastroCategoria#pesquisaCategoria.xhtml"
+  PATH="/pages/cadastroCategoria/pesquisaCategoria.xhtml"
+  SHAPE="32,2353,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroFilme#atualizaFilme.xhtml"
+  PATH="/pages/cadastroFilme/atualizaFilme.xhtml" SHAPE="864,1569,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,2033,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="toAtualizaFilme::#pages#cadastroFilme#atualizaFilme.xhtml"
+    NAME="output" PATH="/pages/cadastroFilme/atualizaFilme.xhtml"
+    TARGET="rules:#pages#cadastroFilme#atualizaFilme.xhtml"
+    TITLE="toAtualizaFilme" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toAtualizaObjeto::#pages#cadastroDependente#atualizaObjeto.xhtml"
+    NAME="output1" PATH="/pages/cadastroDependente/atualizaObjeto.xhtml"
+    TARGET="rules:#pages#cadastroDependente#atualizaObjeto.xhtml"
+    TITLE="toAtualizaObjeto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toPesquisaFilme::#pages#cadastroFilme#pesquisaFilme.xhtml"
+    NAME="output14" PATH="/pages/cadastroFilme/pesquisaFilme.xhtml"
+    TARGET="rules:#pages#cadastroFilme#pesquisaFilme.xhtml"
+    TITLE="toPesquisaFilme" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toIndexLocacao::#pages#locacao#indexLocacao.xhtml"
+    NAME="output2" PATH="/pages/locacao/indexLocacao.xhtml"
+    TARGET="rules:#pages#locacao#indexLocacao.xhtml"
+    TITLE="toIndexLocacao" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toDevolverFilme::#pages#locacao#devolverFilme.xhtml"
+    NAME="output3" PATH="/pages/locacao/devolverFilme.xhtml"
+    TARGET="rules:#pages#locacao#devolverFilme.xhtml"
+    TITLE="toDevolverFilme" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toAlugarFilme::#pages#locacao#alugarFilme.xhtml" NAME="output4"
+    PATH="/pages/locacao/alugarFilme.xhtml"
+    TARGET="rules:#pages#locacao#alugarFilme.xhtml"
+    TITLE="toAlugarFilme" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toAlugarFilmeCliente::#pages#locacao#alugarFilmeCliente.xhtml"
+    NAME="output5" PATH="/pages/locacao/alugarFilmeCliente.xhtml"
+    TARGET="rules:#pages#locacao#alugarFilmeCliente.xhtml"
+    TITLE="toAlugarFilmeCliente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toDevolverFilmeCliente::#pages#locacao#devolverFilmeCliente.xhtml"
+    NAME="output6" PATH="/pages/locacao/devolverFilmeCliente.xhtml"
+    TARGET="rules:#pages#locacao#devolverFilmeCliente.xhtml"
+    TITLE="toDevolverFilmeCliente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toPesquisaDependente::#pages#cadastroDependente#pesquisaDependente.xhtml"
+    NAME="output7"
+    PATH="/pages/cadastroDependente/pesquisaDependente.xhtml"
+    TARGET="rules:#pages#cadastroDependente#pesquisaDependente.xhtml"
+    TITLE="toPesquisaDependente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toAtualizaCategoria::#pages#cadastroCategoria#atualizaCategoria.xhtml"
+    NAME="output8"
+    PATH="/pages/cadastroCategoria/atualizaCategoria.xhtml"
+    TARGET="rules:#pages#cadastroCategoria#atualizaCategoria.xhtml"
+    TITLE="toAtualizaCategoria" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toPesquisaCategoria::#pages#cadastroCategoria#pesquisaCategoria.xhtml"
+    NAME="output9"
+    PATH="/pages/cadastroCategoria/pesquisaCategoria.xhtml"
+    TARGET="rules:#pages#cadastroCategoria#pesquisaCategoria.xhtml"
+    TITLE="toPesquisaCategoria" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toAtualizaGenero::#pages#cadastroGenero#atualizaGenero.xhtml"
+    NAME="output10" PATH="/pages/cadastroGenero/atualizaGenero.xhtml"
+    TARGET="rules:#pages#cadastroGenero#atualizaGenero.xhtml"
+    TITLE="toAtualizaGenero" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toPesquisaGenero::#pages#cadastroGenero#pesquisaGenero.xhtml"
+    NAME="output12" PATH="/pages/cadastroGenero/pesquisaGenero.xhtml"
+    TARGET="rules:#pages#cadastroGenero#pesquisaGenero.xhtml"
+    TITLE="toPesquisaGenero" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toAtualizaCliente::#pages#cadastroCliente#atualizaCliente.xhtml"
+    NAME="output11" PATH="/pages/cadastroCliente/atualizaCliente.xhtml"
+    TARGET="rules:#pages#cadastroCliente#atualizaCliente.xhtml"
+    TITLE="toAtualizaCliente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="toPesquisaCliente::#pages#cadastroCliente#pesquisaCliente.xhtml"
+    NAME="output13" PATH="/pages/cadastroCliente/pesquisaCliente.xhtml"
+    TARGET="rules:#pages#cadastroCliente#pesquisaCliente.xhtml"
+    TITLE="toPesquisaCliente" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroGenero#atualizaGenero.xhtml"
+  PATH="/pages/cadastroGenero/atualizaGenero.xhtml" SHAPE="304,2049,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroGenero#pesquisaGenero.xhtml"
+  PATH="/pages/cadastroGenero/pesquisaGenero.xhtml" SHAPE="304,1937,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroCliente#atualizaCliente.xhtml"
+  PATH="/pages/cadastroCliente/atualizaCliente.xhtml"
+  SHAPE="304,2481,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroCliente#pesquisaCliente.xhtml"
+  PATH="/pages/cadastroCliente/pesquisaCliente.xhtml"
+  SHAPE="304,2481,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#cadastroDependente#atualizaDependente.xhtml"
+  PATH="/pages/cadastroDependente/atualizaDependente.xhtml"
+  SHAPE="304,2449,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#cadastroDependente#pesquisaDependente.xhtml"
+  PATH="/pages/cadastroDependente/pesquisaDependente.xhtml"
+  SHAPE="304,2449,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#locacao#indexLocacao.xhtml"
+  PATH="/pages/locacao/indexLocacao.xhtml" SHAPE="304,2449,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#locacao#devolverFilme.xhtml"
+  PATH="/pages/locacao/devolverFilme.xhtml" SHAPE="304,2449,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#locacao#alugarFilme.xhtml"
+  PATH="/pages/locacao/alugarFilme.xhtml" SHAPE="304,2481,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#locacao#alugarFilmeCliente.xhtml"
+  PATH="/pages/locacao/alugarFilmeCliente.xhtml" SHAPE="304,2513,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#locacao#devolverFilmeCliente.xhtml"
+  PATH="/pages/locacao/devolverFilmeCliente.xhtml" SHAPE="304,2513,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroFilme#pesquisaFilme.xhtml"
+  PATH="/pages/cadastroFilme/pesquisaFilme.xhtml" SHAPE="304,2609,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#cadastroDependente#atualizaObjeto.xhtml"
+  PATH="/pages/cadastroDependente/atualizaObjeto.xhtml"
+  SHAPE="304,2609,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

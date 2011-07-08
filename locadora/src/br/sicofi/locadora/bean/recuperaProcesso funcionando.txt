@@ -1,0 +1,30 @@
+<rich:panel>
+				<f:facet name="header">Pesquisar Processo</f:facet>
+				<h:panelGrid id="panelGrid" columns="2">
+				<a:region>
+					<s:decorate template="/layout/editColuna.xhtml" id="numeroProcessoDec">
+						<ui:define name="label">
+							<h:outputText value="Número do Processo" />
+						</ui:define>
+						<h:inputText
+							value="#{alterarProcessoBean.numeroProcesso}"
+							label="Número do Processo" maxlength="12" id="numeroProcesso"
+							alt="numProcesso"  >
+							<a:support event="onchange" 
+							action="#{alterarProcessoBean.recuperaProcesso}"
+							reRender="alterarProcessoPanel" />
+							</h:inputText>
+					</s:decorate>
+					</a:region>
+					<a:region>					
+					<s:decorate template="/layout/editColuna.xhtml" id="numeroProcessoBotaoDec">
+						<ui:define name="label">
+							<h:outputText value="" />
+						</ui:define>
+						<h:commandButton action="#{alterarProcessoBean.recuperaProcesso}" value="..."  immediate="true">
+						<a:support event="onclick" 	reRender="alterarProcessoPanel" />
+						</h:commandButton>
+					</s:decorate>
+					</a:region>
+				</h:panelGrid>
+			</rich:panel>

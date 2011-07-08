@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:rich="http://richfaces.org/rich"
+ xmlns:a4j="http://richfaces.org/a4j">
+<body>
+<ui:composition template="../index.xhtml">
+ <ui:define name="corpo">
+  <f:view>
+   <rich:messages styleClass="messages" />
+   <a4j:region id="regiaoAjax">
+    <a4j:status id="sts">
+     <f:facet name="start">
+      <h:graphicImage value="/images/ajax-loader.gif" />
+     </f:facet>
+    </a4j:status>
+   </a4j:region>
+   <h1>Pesquisar Clientes</h1>
+   <h:form>
+
+     <h:panelGrid columns="3" id="pesquisa">
+     <h:outputLabel value="Digite Nome " />
+     <h:inputText value="#{dependenteBean.cliente.nome}" />
+     <a4j:commandButton value="Pesquisar"
+      action="#{dependenteBean.pesquisaClientes}" styleClass="botoes"
+      status="sts" reRender="cliente" />
+    </h:panelGrid>
+    <h:panelGrid columns="3">
+     <h:outputLabel value="CPF  " />
+     <h:inputText value="#{dependenteBean.cliente.cpf}" />
+     <a4j:commandButton value="Pesquisar"
+      action="#{dependenteBean.pesquisaClientes}" styleClass="botoes"
+      status="sts" reRender="cliente" />
+    </h:panelGrid>
+   
+   </h:form>
+   <h:form>
+   
+    <rich:panel>
+        <f:facet name="header">
+            <h:outputText value="Resultado Da Pesquisa"></h:outputText>
+        </f:facet>
+        <h:form>
+        <rich:dataGrid value="#{dependenteBean.listClientes}" var="cliente" id="cliente" columns="3" elements="9" width="600px">
+            <rich:panel bodyClass="pbody">
+                <f:facet name="header">
+                    <h:outputText value="Cliente:  "></h:outputText>
+                </f:facet>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Nome: " styleClass="label"></h:outputText>
+                    <h:outputText value="#{cliente.nome}" />
+                    <h:outputText value="Cpf: " styleClass="label"></h:outputText>
+                    <h:outputText value="#{cliente.cpf}" />
+                    <h:outputText value="Email: " styleClass="label"></h:outputText>
+                    <h:outputText value="#{cliente.email}" />
+                    <h:outputText value="Adicionar" />
+                    <a4j:commandLink styleClass="botoes" action="toAtualizaDependente">
+			       	<h:outputText value="dependente" />
+			       	<f:setPropertyActionListener value="#{cliente}"
+			        target="#{clienteBean.cliente}" />
+			      	</a4j:commandLink>
+                    <h:outputText value="Ação: ">
+                    </h:outputText>
+                    <a4j:commandLink styleClass="botoes" action="toAtualizaCliente">
+			       	<h:outputText value="Selecionar" />
+			       	<f:setPropertyActionListener value="#{cliente}"
+			        target="#{clienteBean.cliente}" />
+			      	</a4j:commandLink>
+                    
+                </h:panelGrid>
+            </rich:panel>
+            <f:facet name="footer">
+                <rich:datascroller></rich:datascroller>
+            </f:facet>
+        </rich:dataGrid>
+        
+        
+        <rich:panel id="bubox" styleClass="box" style="width : 286px; height : 47px;">
+        
+        <rich:effect event="onclick" type="BlindUp" params="duration:0.8" />
+        <rich:effect event="onclick" for="bubox" type="Appear" params="delay:3.0,duration:0.5" />
+        <h:commandButton action="toAtualizaCliente" value="Cadastrar Novo Cliente" styleClass="botoes" style=" width : 250px;" />
+        
+    </rich:panel>
+        
+        </h:form>
+    </rich:panel>
+   
+   
+   
+   
+   </h:form>
+  </f:view>
+ </ui:define>
+</ui:composition>
+</body>
+</html>

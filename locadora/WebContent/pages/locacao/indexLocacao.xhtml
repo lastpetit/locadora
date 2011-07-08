@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:rich="http://richfaces.org/rich"
+ xmlns:a4j="http://richfaces.org/a4j">
+<body>
+<ui:composition template="../index.xhtml">
+ <ui:define name="corpo">
+  <f:view>
+   <rich:messages styleClass="messages" />
+   <a4j:region id="regiaoAjax">
+    <a4j:status id="sts">
+     <f:facet name="start">
+      <h:graphicImage value="/images/ajax-loader.gif" />
+     </f:facet>
+    </a4j:status>
+   </a4j:region>
+   <h:form>
+    <h1>Pesquisar Clientes</h1>
+    <h:panelGrid columns="6" id="pesquisa"
+     style=" width : 250px; height : 49px;">
+     <h:outputLabel value="Nome: " />
+     <h:inputText value="#{clienteBean.cliente.nome}"
+      style="height : 20px; width : 169px;" />
+     <a4j:commandButton value="Ok"
+      action="#{clienteBean.pesquisaClientes}" styleClass="botoes"
+      status="sts" reRender="cliente"
+      style="width : 34px; height : 23px;" />
+     <h:outputLabel value="CPF:  " />
+     <h:inputText value="#{clienteBean.cliente.cpf}"
+      style="height : 20px; width : 169px;" />
+     <a4j:commandButton value="Ok"
+      action="#{clienteBean.pesquisaClientes}" styleClass="botoes"
+      status="sts" reRender="cliente"
+      style="width : 34px; height : 23px;" />
+    </h:panelGrid>
+   </h:form>
+   <h:form>
+    <h1>Lista de Clientes</h1>
+    <rich:dataTable value="#{clienteBean.listClientes}" var="cliente"
+     id="cliente" StyleClass="tables"
+     onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+     width="100%">
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Nome" />
+      </f:facet>
+      <h:outputText value="#{cliente.nome}" />
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="CPF" />
+      </f:facet>
+      <h:outputText value="#{cliente.cpf}" />
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Ação" />
+      </f:facet>
+      <a4j:commandLink action="#{locacaoBean.listarLocacao}">
+       <h:outputText value="Devolver" />
+       <f:setPropertyActionListener value="#{cliente}"
+        target="#{locacaoBean.cliente}" />
+      </a4j:commandLink>
+     </rich:column>
+     <rich:column>
+      <f:facet name="header">
+       <h:outputText value="Serviço" />
+      </f:facet>
+      <a4j:commandLink action="toAlugarFilme">
+       <h:outputText value="Alugar" />
+       <f:setPropertyActionListener value="#{cliente}"
+        target="#{locacaoBean.cliente}" />
+      </a4j:commandLink>
+     </rich:column>
+    </rich:dataTable>
+   </h:form>
+  </f:view>
+ </ui:define>
+</ui:composition>
+</body>
+</html>

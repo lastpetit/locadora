@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+	<!-- converter -->
+	<converter>
+		<converter-id>categoriaConverter</converter-id>
+		<converter-class>br.sicofi.locadora.converter.CategoriaConverter</converter-class>
+	</converter>
+	<converter>
+		<converter-id>generoConverter</converter-id>
+		<converter-class>br.sicofi.locadora.converter.GeneroConverter</converter-class>
+	</converter>
+	
+	<!-- beans -->
+
+	<managed-bean>
+		<managed-bean-name>filmeBean</managed-bean-name>
+		<managed-bean-class>br.sicofi.locadora.bean.FilmeBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>categoriaBean</managed-bean-name>
+		<managed-bean-class>br.sicofi.locadora.bean.CategoriaBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>generoBean</managed-bean-name>
+		<managed-bean-class>br.sicofi.locadora.bean.GeneroBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>clienteBean</managed-bean-name>
+		<managed-bean-class>br.sicofi.locadora.bean.ClienteBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>dependenteBean</managed-bean-name>
+		<managed-bean-class>br.sicofi.locadora.bean.DependenteBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>locacaoBean</managed-bean-name>
+		<managed-bean-class>br.sicofi.locadora.bean.LocacaoBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<!-- navigation -->
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>toAtualizaFilme</from-outcome>
+			<to-view-id>/pages/cadastroFilme/atualizaFilme.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toAtualizaObjeto</from-outcome>
+			<to-view-id>/pages/cadastroDependente/atualizaObjeto.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toPesquisaFilme</from-outcome>
+			<to-view-id>/pages/cadastroFilme/pesquisaFilme.xhtml</to-view-id>
+
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toIndexLocacao</from-outcome>
+			<to-view-id>/pages/locacao/indexLocacao.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toDevolverFilme</from-outcome>
+			<to-view-id>/pages/locacao/devolverFilme.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toAlugarFilme</from-outcome>
+			<to-view-id>/pages/locacao/alugarFilme.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toAlugarFilmeCliente</from-outcome>
+			<to-view-id>/pages/locacao/alugarFilmeCliente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toDevolverFilmeCliente</from-outcome>
+			<to-view-id>/pages/locacao/devolverFilmeCliente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toAtualizaDependente</from-outcome>
+			<to-view-id>/pages/cadastroDependente/atualizaDependente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toPesquisaDependente</from-outcome>
+			<to-view-id>/pages/cadastroDependente/pesquisaDependente.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toAtualizaCategoria</from-outcome>
+			<to-view-id>/pages/cadastroCategoria/atualizaCategoria.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toPesquisaCategoria</from-outcome>
+			<to-view-id>/pages/cadastroCategoria/pesquisaCategoria.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toAtualizaGenero</from-outcome>
+			<to-view-id>/pages/cadastroGenero/atualizaGenero.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toPesquisaGenero</from-outcome>
+			<to-view-id>/pages/cadastroGenero/pesquisaGenero.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toAtualizaCliente</from-outcome>
+			<to-view-id>/pages/cadastroCliente/atualizaCliente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>toPesquisaCliente</from-outcome>
+			<to-view-id>/pages/cadastroCliente/pesquisaCliente.xhtml</to-view-id>
+		</navigation-case>
+
+	</navigation-rule>
+
+</faces-config>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+ xmlns:a4j="http://richfaces.org/a4j">
+<head>
+<style type="text/css">
+<!--
+* {
+	font: bold 12px Arial, Helvetica, sans-serif;
+}
+
+.messages {
+	color: #008B00;
+}
+
+.edit {
+	border: 1px inset;
+	background-color: #BEBEBE;
+	color: #2F4F4F;
+}
+
+.pic {
+	margin-bottom: -4px;
+	margin-right: 2px;
+}
+
+.botoes {
+	font: 12px Arial, Helvetica, sans-serif;
+	color: #00BFFF;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 0 5px 0 5px;
+	border-bottom: 1px solid #666;
+	border-right: 1px solid #666;
+	border-top: 1px solid #eee;
+	border-left: 1px solid #eee;
+	width: 70px;
+	margin: 0 5px 0 5px;
+}
+
+.botoes:hover {
+	background-color: #D2691E;
+	color: #363636;
+}
+
+.newBotao {
+	font: 12px Arial, Helvetica, sans-serif;
+	color: #6A5ACD;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 0 5px 0 5px;
+	border-bottom: 1px solid #666;
+	border-right: 1px solid #666;
+	border-top: 1px solid #eee;
+	border-left: 1px solid #eee;
+	width: 100px;
+	margin: 0 5px 0 5px;
+}
+
+.newBotao:hover {
+	background-color: #D2B48C;
+	color: #1C1C1C;
+}
+
+.rotulos {
+	color: #2F4F4F;
+}
+
+legend {
+	font-size: 18px;
+	font-weight: bold;
+	padding: 0 10px;
+	color: #1E90FF;
+	border-top: none;
+}
+
+h1 {
+	font-size: 14px;
+	margin: 10px 0 10px 5px;
+	color: #1E90FF;
+}
+
+h2 {
+	font-size: 13px;
+	margin: 10px 0 10px 5px;
+	color: #BA55D3;
+}
+
+.tables {
+	border: 1px #666;
+	width: 100%;
+}
+
+fieldset {
+	border: none;
+	
+	padding-left: 30px;
+	margin-bottom: 20px;
+	margin-top: none;
+}
+
+input {
+	margin: 1px 0;
+	color: #666666;
+	font-size: 11px;
+	height: auto;
+	padding: 4px 3px 0 3px;
+	border-left: 1px solid #000;
+	border: 1px solid #bddbfc;
+	width: 200px;;
+}
+
+.inputStyle {
+	margin: 1px 0;
+	color: #666666;
+	font-size: 11px;
+	height: auto;
+	padding: 4px 3px 0 3px;
+	border-left: 1px solid #000;
+	border: 1px solid #bddbfc;
+	width: 200px;
+}
+
+.inputTextArea {
+	margin: 1px 0;
+	color: #666666;
+	font-size: 11px;
+	height: auto;
+	padding: 4px 3px 0 3px;
+	border-left: 1px solid #000;
+	border: 1px solid #bddbfc;
+	height: 80px;
+	width: 220px;
+}
+
+td {
+	margin: 1px 0;
+	padding: 5px 0;
+	color: #666;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.label{
+font-weight:bold;
+}
+.pbody{
+    width:200px;
+}
+
+
+ .box {
+    background-color: #FFF;
+    height:100px;
+    width: 200px;
+    text-align:center;
+}
+
+.cell { 
+     height:120px;
+     width: 220px;
+     vertical-align:top;
+    
+}
+-->
+</style>
+</head>
+<body>
+<fieldset><legend>Locadora</legend> <h:form>
+ <rich:toolBar>
+  
+  <rich:dropDownMenu>
+   <f:facet name="label">
+    <h:panelGroup>
+     <h:outputText value="Menu Principal" />
+    </h:panelGroup>
+   </f:facet>
+   <rich:menuItem submitMode="ajax" value="Filme"
+    action="toPesquisaFilme" />
+   <rich:menuItem submitMode="ajax" value="Categoria"
+    action="toPesquisaCategoria" />
+   <rich:menuItem submitMode="ajax" value="Gênero"
+    action="toPesquisaGenero" />
+   <rich:menuItem submitMode="ajax" value="Cliente"
+    action="toPesquisaCliente" />
+  </rich:dropDownMenu>
+  
+ 
+  <rich:dropDownMenu>
+   <f:facet name="label">
+    <h:panelGroup>
+     <h:outputText value="Aluguel" />
+    </h:panelGroup>
+   </f:facet>
+   <rich:menuItem submitMode="ajax" value="Alugar"
+    action="toIndexLocacao" />
+  </rich:dropDownMenu>
+  
+  <rich:dropDownMenu>
+   <f:facet name="label">
+    <h:panelGroup>
+     <h:outputText value="Devolução" />
+    </h:panelGroup>
+   </f:facet>
+   <rich:menuItem submitMode="ajax" value="Devolver"
+    action="toIndexLocacao" />
+  </rich:dropDownMenu>
+ </rich:toolBar>
+ 
+ 
+ <ui:insert>
+  
+  
+  
+  
+ </ui:insert>
+</h:form> <ui:insert name="corpo">
+</ui:insert></fieldset>
+
+
+<br />
+
+		
+</body>
+</html>
